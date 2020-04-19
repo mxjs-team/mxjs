@@ -1,7 +1,7 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![License](https://img.shields.io/github/license/maxsalles/node-app-template.svg)](LICENSE.md)
-[![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/maxsalles/node-app-template.svg)](https://codeclimate.com/github/maxsalles/node-app-template/maintainability)
-[![Build status](https://travis-ci.org/maxsalles/node-app-template.svg?branch=master)](https://codeclimate.com/github/maxsalles/node-app-template/test_coverage)
+[![License](https://img.shields.io/github/license/mxjs-team/mxjs.svg)](LICENSE.md)
+[![Maintainability](https://img.shields.io/codeclimate/maintainability-percentagemxjs-team/mxjs.svg)](https://codeclimate.com/github/mxjs-team/mxjs/maintainability)
+[![Build status](https://travis-ci.org/mxjs-team/mxjs.svg?branch=master)](https://codeclimate.com/github/mxjs-team/mxjs/test_coverage)
 
 # MXJS
 
