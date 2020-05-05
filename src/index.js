@@ -1,3 +1,3 @@
-import hello from './hello'
+import { mix, hasMixin } from './mixin'
 
-console.log(hello())
+export { mix, hasMixin }
