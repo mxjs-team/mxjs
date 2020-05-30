@@ -1,6 +1,4 @@
 import { EVENT_PROPERTY } from './constants'
-import removeCallback from './removeCallback'
-import matchType from './matchType'
 
 /**
  * Description
@@ -11,74 +9,56 @@ const EventMixin = Class => class extends Class {
   constructor () {
     super()
     Object.defineProperty(this, EVENT_PROPERTY, {
-      value: {}, writable: true
+      value: new Map(), writable: true
     })
   }
 
   /**
    * Description
    *
-   * @param {string} type - description
+   * @param {string|RegExp} expression - description
    * @param {function} callback - description
-   * @returns {this}
+   * @returns {symbol} - description
    */
-  on (type, callback) {
-    this[EVENT_PROPERTY][type] = [
-      ...(this[EVENT_PROPERTY][type] || []),
-      callback
-    ]
+  subscribe (expression, callback) {
+    const subscription = Symbol()
 
-    return this
+    this[EVENT_PROPERTY].set(subscription, { expression, callback })
+
+    return subscription
   }
 
   /**
    * Description
    *
-   * @param {string|RegExp} type - description
-   * @param {function=} callback - description
-   * @returns {this}
+   * @param {symbol} subscription - description
+   * @returns {boolean} - description
    */
-  off (type, callback) {
-    const events = this[EVENT_PROPERTY]
-
-    this[EVENT_PROPERTY] = Object.entries(events).reduce(
-      (events, [currentType, callbacks]) => ({
-        ...events,
-        ...(
-          matchType(type, currentType)
-            ? removeCallback(callback, callbacks, currentType)
-            : { [currentType]: callbacks }
-        )
-      }),
-      {}
-    )
-
-    return this
+  unsubscribe (subscription) {
+    return this[EVENT_PROPERTY].delete(subscription)
   }
 
   /**
    * Description
    *
-   * @param {string|RegExp} type - description
+   * @param {string} type - description
    * @param {*} data - description
    * @param {Object} thisObject - description
    * @returns {this}
    */
   trigger (type, data, thisObject) {
-    const events = this[EVENT_PROPERTY]
+    for (const [subscription, { expression, callback }] of this[EVENT_PROPERTY]) {
+      const matchArray = (typeof expression === 'string')
+        ? expression === type
+        : type.match(expression)
 
-    for (const currentType in events) {
-      const matchResult = matchType(type, currentType)
+      if (!matchArray) continue
 
-      if (!matchResult) continue
-
-      for (const callback of events[currentType]) {
-        callback.call(...[
-          thisObject !== undefined ? thisObject : this,
-          data,
-          ...(Array.isArray(matchResult) ? [matchResult] : [])
-        ])
-      }
+      callback.call(
+        thisObject !== undefined ? thisObject : this,
+        data,
+        { subscription,  ...(Array.isArray(matchArray) ? { matchArray } : {}) }
+      )
     }
 
     return this
