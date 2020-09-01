@@ -1,8 +1,11 @@
 {
-  "name": "my-project-name",
+  "name": "mxjs",
   "version": "0.1.0",
-  "description": "My project description",
+  "description": "JavaScript library for incremental front-end improvement",
   "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
   "files": [
     "./src"
   ],
@@ -24,6 +27,11 @@
     "transform": {
       ".*": "<rootDir>/node_modules/babel-jest"
     }
+  },
+  "standard": {
+    "globals": [
+      "NodeFilter"
+    ]
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
