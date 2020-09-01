@@ -1,11 +1,11 @@
 jest.mock('../../src/storage/copyAndFreeze')
 
-import hasMixin from '../../src/mixin/hasMixin'
-import EventMixin from '../../src/event/EventMixin'
-import Storage from '../../src/storage/Storage'
 import { STORAGE_PROPERTY } from '../../src/storage/constants'
-import defaultReducer from '../../src/storage/defaultReducer'
 import copyAndFreeze from '../../src/storage/copyAndFreeze'
+import defaultReducer from '../../src/storage/defaultReducer'
+import EventMixin from '../../src/event/EventMixin'
+import hasMixin from '../../src/mixin/hasMixin'
+import Storage from '../../src/storage/Storage'
 
 describe('Storage.constructor', () => {
   const initialState = {}
@@ -30,7 +30,7 @@ describe('Storage.constructor', () => {
   })
 
   it('implements "EventMixin"', () => {
-    expect(hasMixin(EventMixin, Storage)).toBeTruthy()
+    expect(hasMixin(Storage, EventMixin)).toBeTruthy()
   })
 
   describe('when less "options" are passed than available', () => {

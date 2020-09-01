@@ -7,9 +7,9 @@ jest.mock('../../src/storage/copyAndFreeze', () => {
 
 jest.mock('../../src/diff/diff')
 
-import Storage from '../../src/storage/Storage'
 import copyAndFreeze from '../../src/storage/copyAndFreeze'
 import diff from '../../src/diff/diff'
+import Storage from '../../src/storage/Storage'
 
 describe('Storage#[set]state', () => {
   const storage = new Storage({})

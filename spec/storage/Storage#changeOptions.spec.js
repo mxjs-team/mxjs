@@ -1,7 +1,7 @@
 jest.mock('../../src/storage/normalizeOptions')
 
-import Storage from '../../src/storage/Storage'
 import normalizeOptions from '../../src/storage/normalizeOptions'
+import Storage from '../../src/storage/Storage'
 
 describe('Storage#changeOptions', () => {
   const storage = new Storage({})
