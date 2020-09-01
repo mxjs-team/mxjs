@@ -1,7 +1,7 @@
 {
-  "name": "my-project-name",
+  "name": "mxjs",
   "version": "0.1.0",
-  "description": "My project description",
+  "description": "JavaScript library for incremental front-end improvement",
   "main": "src/index.js",
   "directories": {
     "test": "test"
@@ -34,17 +34,16 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.1.0",
     "docdash": "^1.2.0",
     "jest": "^24.9.0",
-    "jest-cli": "^25.4.0",
-    "jsdoc": "^3.6.4",
+    "jsdoc": "^3.6.5",
     "standard": "^12.0.1",
-    "webpack": "^4.42.1",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {}
 }
