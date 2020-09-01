@@ -1,8 +1,8 @@
 jest.mock('../../src/mixin/hasMixin')
 
 import apply from '../../src/mixin/apply'
-import hasMixin from '../../src/mixin/hasMixin'
 import { APPLIED_MIXIN_PROPERTY } from '../../src/mixin/constants'
+import hasMixin from '../../src/mixin/hasMixin'
 
 describe('apply', () => {
   const mixed = {}
