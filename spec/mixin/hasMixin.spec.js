@@ -1,5 +1,5 @@
-import hasMixin from '../../src/mixin/hasMixin'
 import { APPLIED_MIXIN_PROPERTY } from '../../src/mixin/constants'
+import hasMixin from '../../src/mixin/hasMixin'
 
 describe('hasMixin', () => {
   const mixin = Class => class extends Class {}
@@ -9,7 +9,7 @@ describe('hasMixin', () => {
       class Class {}
       Class[APPLIED_MIXIN_PROPERTY] = mixin
 
-      expect(hasMixin(mixin, Class)).toBeTruthy()
+      expect(hasMixin(Class, mixin)).toBeTruthy()
     })
   })
 
@@ -19,7 +19,7 @@ describe('hasMixin', () => {
       class Class extends SuperClass {}
       SuperClass[APPLIED_MIXIN_PROPERTY] = mixin
 
-      expect(hasMixin(mixin, Class)).toBeTruthy()
+      expect(hasMixin(Class, mixin)).toBeTruthy()
     })
 
     it('returns "false" if the property isn`t "mixin"', () => {
@@ -29,7 +29,7 @@ describe('hasMixin', () => {
       class Class extends SuperClass {}
       SuperClass[APPLIED_MIXIN_PROPERTY] = otherMixin
 
-      expect(hasMixin(mixin, Class)).toBeFalsy()
+      expect(hasMixin(Class, mixin)).toBeFalsy()
     })
   })
 
@@ -38,7 +38,7 @@ describe('hasMixin', () => {
       class SuperClass {}
       class Class extends SuperClass {}
 
-      expect(hasMixin(mixin, Class)).toBeFalsy()
+      expect(hasMixin(Class, mixin)).toBeFalsy()
     })
   })
 })
