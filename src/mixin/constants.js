@@ -1,3 +1,3 @@
-const APPLIED_MIXIN_PROPERTY = Symbol()
+const APPLIED_MIXIN_PROPERTY = Symbol('mixins')
 
 export { APPLIED_MIXIN_PROPERTY }

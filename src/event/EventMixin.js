@@ -11,7 +11,7 @@ const EventMixin = Class => class extends Class {
   }
 
   subscribe (expression, callback) {
-    const subscription = Symbol()
+    const subscription = Symbol('event-subscription')
 
     this[EVENT_PROPERTY].set(subscription, { expression, callback })
 
@@ -33,7 +33,7 @@ const EventMixin = Class => class extends Class {
       callback.call(
         thisObject !== undefined ? thisObject : this,
         data,
-        { subscription,  ...(Array.isArray(matchArray) ? { matchArray } : {}) }
+        { subscription, ...(Array.isArray(matchArray) ? { matchArray } : {}) }
       )
     }
 
