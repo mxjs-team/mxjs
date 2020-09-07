@@ -14,8 +14,10 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage --colors",
     "doc": "jsdoc -c jsdoc.conf.json",
-    "build:watch": "standard \"src/**/*.js\" \"test/**/*.js\" && webpack -w --mode development",
-    "build:prod": "standard \"src/**/*.js\" \"test/**/*.js\" && webpack --mode production && webpack --mode production"
+    "lint": "./node_modules/.bin/standard \"src/**/*.js\"",
+    "lint:fix": "./node_modules/.bin/standard --fix \"src/**/*.js\"",
+    "build:watch": "./node_modules/.bin/standard \"src/**/*.js\" && webpack -w --mode development",
+    "build:prod": "./node_modules/.bin/standard \"src/**/*.js\" && webpack --mode production && webpack --mode production"
   },
   "keywords": [
     "node",
