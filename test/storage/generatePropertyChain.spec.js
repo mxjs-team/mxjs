@@ -2,11 +2,28 @@ import generatePropertyChain from '../../src/storage/generatePropertyChain'
 
 describe('generatePropertyChain', () => {
   it('returns an "Array" with the property chain', () => {
-    const path = 'property.otherProperty[0].anotherProperty'
+    const examples = [
+      {
+        path: 'property.otherProperty[0].anotherProperty',
+        result: ['property', 'otherProperty', '0', 'anotherProperty']
+      },
+      {
+        path: '.property.otherProperty[0].anotherProperty',
+        result: ['property', 'otherProperty', '0', 'anotherProperty']
+      },
+      {
+        path: '[property]otherProperty[0].anotherProperty',
+        result: ['property', 'otherProperty', '0', 'anotherProperty']
+      },
+      {
+        path: '[[property]]..otherProperty[0].[anotherProperty]',
+        result: ['property', 'otherProperty', '0', 'anotherProperty']
+      },
+    ]
 
-    expect(generatePropertyChain(path)).toEqual([
-      'property', 'otherProperty', '0', 'anotherProperty'
-    ])
+    for (const { path, result } of examples) {
+      expect(generatePropertyChain(path)).toEqual(result)
+    }
   })
 
   describe('when the "path" is an "Array"', () => {

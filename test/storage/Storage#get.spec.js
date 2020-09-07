@@ -15,5 +15,6 @@ describe('Storage#get', () => {
     const path = 'property[1].otherProperty'
 
     expect(storage.get(path)).toBe(storage.state.property[1].otherProperty)
+    expect(storage.get(`.${path}`)).toBe(storage.state.property[1].otherProperty)
   })
 })
